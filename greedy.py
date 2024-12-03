@@ -68,3 +68,25 @@ def greedy_initial_solution(data):
 
     print(containers)
     return containers
+
+
+def main():
+    # Load the data
+    data = pd.read_csv('Term project data 1a.csv')
+
+    # Compute the metric for each order
+    data = compute_metric(data)
+
+    # Create an initial greedy solution
+    containers = greedy_initial_solution(data)
+
+    # Output the containers
+    for container_id, orders in containers.items():
+        print(f"Container {container_id + 1}:")
+        for order in orders:
+            order_data = data[data['Order Number'] == order].iloc[0]
+            print(f"  Order {order} - Weight: {order_data['Weight (lbs)']}, Volume: {order_data['Volume (in3)']}, Pallets: {order_data['Pallets']}")
+
+
+if __name__ == "__main__":
+    main()

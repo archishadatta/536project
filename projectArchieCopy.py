@@ -1,16 +1,26 @@
 import pandas as pd
 from greedy import compute_metric, greedy_initial_solution
 import pulp
-from pulp.apis import GUROBI_CMD
-
+from pulp.apis import GUROBI_CMD, GUROBI
+import gurobipy as gp
 # Load the dataset
-data = pd.read_csv('test data copy.csv')
+import sys
+
+
+
+dataset_name = 'Term project data 1b.csv'
+dataset_name_no_extension = dataset_name.split('.')[0]
+data = pd.read_csv(dataset_name)
+
+orig_stdout = sys.stdout
+f = open(dataset_name_no_extension+'.txt', 'w')
+sys.stdout = f
 
 # Define constants
+MAX_CONTAINERS = len(data)  # Maximum possible containers in worst case
 MAX_WEIGHT = 45000
 MAX_VOLUME = 3600
 MAX_PALLETS = 60
-MAX_CONTAINERS = len(data)  # Maximum possible containers in worst case
 
 # Initialize the optimization problem
 prob = pulp.LpProblem("Container_Optimization", pulp.LpMinimize)
@@ -21,6 +31,15 @@ volumes = data['Volume (in3)'].tolist()
 pallets = data['Pallets'].tolist()
 order_numbers = data['Order Number'].tolist()
 
+
+
+
+
+# Greedy initial solution
+data = compute_metric(data)
+greedy_solution = greedy_initial_solution(data)
+MAX_CONTAINERS = len(greedy_solution)
+print("num containers initial ", MAX_CONTAINERS)
 # Decision variables
 # Binary variable where x_ij = 1 if order i is assigned to container j, 0 otherwise
 x = pulp.LpVariable.dicts("x", [(i, j) for i in range(len(data)) for j in range(MAX_CONTAINERS)], cat="Binary") 
@@ -46,17 +65,21 @@ for j in range(MAX_CONTAINERS):
 for j in range(MAX_CONTAINERS):
     prob += pulp.lpSum([pallets[i] * x[i, j] for i in range(len(data))]) <= MAX_PALLETS * y[j]
 
-# Greedy initial solution
-data = compute_metric(data)
-greedy_solution = greedy_initial_solution(data)
 for j, orders in greedy_solution.items():
     for order in orders:
         order_index = order_numbers.index(order)
         x[order_index, j].setInitialValue(1)
     y[j].setInitialValue(1)
 
+print("Initial value of y: ", y[0])
+print("Initial value of x: ", x[0, 0])
+
+options = {"WLSACCESSID": ,
+    "WLSSECRET": ,
+    "LICENSEID": ,}
 # Solve the problem
-prob.solve(solver=GUROBI_CMD())
+
+prob.solve(solver=GUROBI(manageEnv=True, envOptions=options))
 
 # Output results
 print(f"Status: {pulp.LpStatus[prob.status]}")
@@ -72,3 +95,5 @@ for j in range(MAX_CONTAINERS):
         for i in range(len(data)):
             if x[i, j].varValue == 1:
                 print(f"  Order {order_numbers[i]} - Weight: {weights[i]}, Volume: {volumes[i]}, Pallets: {pallets[i]}")
+
+f.close()
