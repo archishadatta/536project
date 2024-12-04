@@ -1,0 +1,139 @@
+Container 1:
+  Order 35768999 - Weight: 43475, Volume: 3564, Pallets: 38
+Container 2:
+  Order 25448434 - Weight: 7849, Volume: 445, Pallets: 10
+  Order 78304670 - Weight: 36693, Volume: 2900, Pallets: 40
+Container 3:
+  Order 34284905 - Weight: 359, Volume: 302, Pallets: 4
+  Order 66527676 - Weight: 9649, Volume: 147, Pallets: 12
+  Order 88349496 - Weight: 34799, Volume: 2864, Pallets: 40
+Container 4:
+  Order 53922630 - Weight: 23116, Volume: 551, Pallets: 3
+  Order 28714744 - Weight: 21391, Volume: 2058, Pallets: 54
+Container 5:
+  Order 74322802 - Weight: 44968, Volume: 1240, Pallets: 35
+Container 6:
+  Order 39016579 - Weight: 5675, Volume: 156, Pallets: 1
+  Order 56669300 - Weight: 6891, Volume: 861, Pallets: 28
+  Order 56017398 - Weight: 29725, Volume: 2529, Pallets: 31
+Container 7:
+  Order 35855033 - Weight: 4399, Volume: 1614, Pallets: 18
+  Order 26695468 - Weight: 40025, Volume: 1751, Pallets: 30
+Container 8:
+  Order 29800110 - Weight: 30566, Volume: 1448, Pallets: 46
+  Order 20590854 - Weight: 3555, Volume: 1736, Pallets: 14
+Container 9:
+  Order 53008046 - Weight: 18820, Volume: 1011, Pallets: 23
+  Order 60611567 - Weight: 20311, Volume: 2562, Pallets: 35
+Container 10:
+  Order 93047688 - Weight: 28805, Volume: 2243, Pallets: 28
+  Order 37174499 - Weight: 15958, Volume: 628, Pallets: 28
+Container 11:
+  Order 22000216 - Weight: 19128, Volume: 2103, Pallets: 43
+  Order 57590712 - Weight: 18540, Volume: 1466, Pallets: 17
+Container 12:
+  Order 21039456 - Weight: 1115, Volume: 214, Pallets: 5
+  Order 93337374 - Weight: 17871, Volume: 1160, Pallets: 20
+  Order 28935702 - Weight: 25606, Volume: 2207, Pallets: 32
+Container 13:
+  Order 68793187 - Weight: 1384, Volume: 1028, Pallets: 4
+  Order 11490628 - Weight: 40008, Volume: 910, Pallets: 34
+  Order 77547998 - Weight: 580, Volume: 353, Pallets: 1
+  Order 83821078 - Weight: 2428, Volume: 890, Pallets: 19
+Container 14:
+  Order 60594081 - Weight: 17448, Volume: 2397, Pallets: 39
+  Order 38067641 - Weight: 18858, Volume: 922, Pallets: 10
+  Order 33647569 - Weight: 5135, Volume: 265, Pallets: 10
+Container 15:
+  Order 58009674 - Weight: 7659, Volume: 1236, Pallets: 22
+  Order 43752435 - Weight: 36898, Volume: 1653, Pallets: 25
+Container 16:
+  Order 76002209 - Weight: 27734, Volume: 2074, Pallets: 29
+  Order 64486195 - Weight: 16516, Volume: 1499, Pallets: 19
+Container 17:
+  Order 96256394 - Weight: 19050, Volume: 2251, Pallets: 37
+  Order 20187442 - Weight: 3247, Volume: 54, Pallets: 8
+  Order 49655822 - Weight: 21560, Volume: 1224, Pallets: 9
+Container 18:
+  Order 39825791 - Weight: 31796, Volume: 686, Pallets: 45
+  Order 58966648 - Weight: 747, Volume: 177, Pallets: 4
+  Order 24746651 - Weight: 12137, Volume: 1166, Pallets: 6
+Container 19:
+  Order 71406992 - Weight: 10638, Volume: 865, Pallets: 20
+  Order 83678735 - Weight: 34018, Volume: 1936, Pallets: 19
+Container 20:
+  Order 64566630 - Weight: 25763, Volume: 1869, Pallets: 29
+  Order 71307112 - Weight: 3942, Volume: 413, Pallets: 9
+  Order 94700524 - Weight: 14665, Volume: 1270, Pallets: 16
+Container 21:
+  Order 70260425 - Weight: 14966, Volume: 655, Pallets: 18
+  Order 51226204 - Weight: 28824, Volume: 1661, Pallets: 26
+  Order 39317113 - Weight: 1087, Volume: 786, Pallets: 2
+Container 22:
+  Order 50135985 - Weight: 18687, Volume: 2309, Pallets: 28
+  Order 92435895 - Weight: 23640, Volume: 592, Pallets: 30
+Container 23:
+  Order 25745413 - Weight: 1277, Volume: 349, Pallets: 6
+  Order 37355174 - Weight: 11993, Volume: 793, Pallets: 9
+  Order 81572573 - Weight: 1743, Volume: 293, Pallets: 16
+  Order 82249015 - Weight: 29138, Volume: 1607, Pallets: 23
+Container 24:
+  Order 11457722 - Weight: 4220, Volume: 529, Pallets: 10
+  Order 76803925 - Weight: 40526, Volume: 1688, Pallets: 6
+Container 25:
+  Order 39967982 - Weight: 21548, Volume: 1584, Pallets: 11
+  Order 35744676 - Weight: 1790, Volume: 235, Pallets: 6
+  Order 49021766 - Weight: 18760, Volume: 1727, Pallets: 34
+Container 26:
+  Order 26261641 - Weight: 3388, Volume: 569, Pallets: 9
+  Order 38284690 - Weight: 32889, Volume: 686, Pallets: 32
+  Order 84890867 - Weight: 7049, Volume: 754, Pallets: 10
+Container 27:
+  Order 44893550 - Weight: 14193, Volume: 445, Pallets: 10
+  Order 43343799 - Weight: 30799, Volume: 1853, Pallets: 15
+Container 28:
+  Order 28164157 - Weight: 15574, Volume: 2043, Pallets: 32
+  Order 77562238 - Weight: 23748, Volume: 528, Pallets: 28
+Container 29:
+  Order 45958723 - Weight: 20086, Volume: 1924, Pallets: 27
+  Order 25034901 - Weight: 12514, Volume: 517, Pallets: 8
+  Order 52893203 - Weight: 8920, Volume: 887, Pallets: 3
+Container 30:
+  Order 18052111 - Weight: 3020, Volume: 387, Pallets: 7
+  Order 98676826 - Weight: 13612, Volume: 392, Pallets: 8
+  Order 85536584 - Weight: 28204, Volume: 1741, Pallets: 19
+Container 31:
+  Order 17708789 - Weight: 3517, Volume: 781, Pallets: 4
+  Order 82198157 - Weight: 13299, Volume: 493, Pallets: 6
+  Order 74790348 - Weight: 19603, Volume: 1521, Pallets: 34
+  Order 54438148 - Weight: 6421, Volume: 556, Pallets: 9
+Container 32:
+  Order 15565305 - Weight: 12518, Volume: 431, Pallets: 8
+  Order 28907507 - Weight: 7065, Volume: 131, Pallets: 8
+  Order 24396460 - Weight: 21949, Volume: 2989, Pallets: 6
+Container 33:
+  Order 97817472 - Weight: 7780, Volume: 333, Pallets: 9
+  Order 56159148 - Weight: 31723, Volume: 433, Pallets: 34
+Container 34:
+  Order 70944508 - Weight: 43893, Volume: 1144, Pallets: 1
+Container 35:
+  Order 11287205 - Weight: 6709, Volume: 83, Pallets: 9
+  Order 54166405 - Weight: 12182, Volume: 381, Pallets: 2
+  Order 75920615 - Weight: 6653, Volume: 158, Pallets: 2
+  Order 74775796 - Weight: 19186, Volume: 2970, Pallets: 2
+Container 36:
+  Order 50218071 - Weight: 6517, Volume: 400, Pallets: 4
+  Order 52007731 - Weight: 37999, Volume: 855, Pallets: 12
+Container 37:
+  Order 77424112 - Weight: 42593, Volume: 643, Pallets: 6
+Container 38:
+  Order 44361973 - Weight: 17741, Volume: 2230, Pallets: 11
+  Order 11381536 - Weight: 10907, Volume: 288, Pallets: 1
+  Order 45727112 - Weight: 11182, Volume: 279, Pallets: 3
+Container 39:
+  Order 50097028 - Weight: 31141, Volume: 91, Pallets: 27
+  Order 92678679 - Weight: 12230, Volume: 40, Pallets: 2
+Container 40:
+  Order 10360462 - Weight: 7021, Volume: 349, Pallets: 3
+  Order 26100560 - Weight: 7013, Volume: 293, Pallets: 3
+  Order 46691434 - Weight: 10173, Volume: 22, Pallets: 2
