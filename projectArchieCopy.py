@@ -33,9 +33,16 @@ order_numbers = data['Order Number'].tolist()
 
 
 
+<<<<<<< HEAD
 # options = {"WLSACCESSID": "",
 #     "WLSSECRET": "",
 #     "LICENSEID": }
+=======
+options = {"WLSACCESSID":,
+    "WLSSECRET": ,
+    "LICENSEID": ,
+    "LogFile": "gurobi.log",}
+>>>>>>> b4b584fc124f299593dae6d0aa92fedfcc752315
 
 # Greedy initial solution
 data = compute_metric(data)
@@ -55,10 +62,13 @@ prob += pulp.lpSum([y[j] for j in range(MAX_CONTAINERS)])
 # Constraint to force x[0, 0] to 1
 prob += x[0, 0] == 1
 
+<<<<<<< HEAD
 # Constraint to force y at index 0 to 262 to 1
 # for j in range(262):
 #     prob += y[j] == 1
 
+=======
+>>>>>>> b4b584fc124f299593dae6d0aa92fedfcc752315
 # Constraint to force y[j] to be 1 only if y[j-1] is 1
 for j in range(1, MAX_CONTAINERS):
     prob += y[j] <= y[j-1]
