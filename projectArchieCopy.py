@@ -7,18 +7,19 @@ import gurobipy as gp
 import sys
 
 
-options = {"WLSACCESSID": "",
-    "WLSSECRET": "",
-    "LICENSEID": ,
-    "LogFile": "gurobi1a.log",}
+# options = {"WLSACCESSID": "",
+#     "WLSSECRET": "",
+#     "LICENSEID": ,
+#     "LogFile": "gurobi1a.log",}
 
+# Read in data
 dataset_name = 'Term project data 1a.csv'
 dataset_name_no_extension = dataset_name.split('.')[0]
 data = pd.read_csv(dataset_name)
 
-orig_stdout = sys.stdout
-f = open(dataset_name_no_extension+'.txt', 'a')
-sys.stdout = f
+# orig_stdout = sys.stdout
+# f = open(dataset_name_no_extension+'.txt', 'a')
+# sys.stdout = f
 
 # Define constants
 MAX_CONTAINERS = len(data)  # Maximum possible containers in worst case
@@ -39,7 +40,9 @@ order_numbers = data['Order Number'].tolist()
 data = compute_metric(data)
 greedy_solution = greedy_initial_solution(data)
 MAX_CONTAINERS = len(greedy_solution)
-print("num containers initial ", MAX_CONTAINERS)
+print("Number of containers initial (greedy) ", MAX_CONTAINERS)
+
+
 # Decision variables
 # Binary variable where x_ij = 1 if order i is assigned to container j, 0 otherwise
 x = pulp.LpVariable.dicts("x", [(i, j) for i in range(len(data)) for j in range(MAX_CONTAINERS)], cat="Binary") 
@@ -48,9 +51,6 @@ y = pulp.LpVariable.dicts("y", [j for j in range(MAX_CONTAINERS)], cat="Binary")
 
 # Objective: minimize the number of containers used
 prob += pulp.lpSum([y[j] for j in range(MAX_CONTAINERS)])
-# Constraint to force x[0, 0] to 1 to reduce symmetry
-#prob += x[0, 0] == 1
-
 
     
 # Constraint 1: Each order is assigned to exactly one container
@@ -69,57 +69,46 @@ for j in range(MAX_CONTAINERS):
 for j in range(MAX_CONTAINERS):
     prob += pulp.lpSum([pallets[i] * x[i, j] for i in range(len(data))]) <= MAX_PALLETS * y[j]
 
+
+# Symmetry constraints
+#prob += x[0, 0] == 1
+count = 0
 for j, orders in greedy_solution.items():
     for order in orders:
         order_index = order_numbers.index(order)
         x[order_index, j].setInitialValue(1)
         #reduce symmetries
-        pallet_count = data["Pallets"].iloc[order_index] 
-        if pallet_count > MAX_PALLETS / 2:
+        vol = data["Volume (in3)"].iloc[order_index] 
+        if vol > MAX_VOLUME / 2:
             prob += x[order_index, j] == 1
-
+            count += 1
     y[j].setInitialValue(1)
+
+print("Number of hardcoded symmetries",count)   
         
          
 
-print("Initial value of y: ", y[0])
-print("Initial value of x: ", x[0, 0])
+# print("Initial value of y: ", y[0])
+# print("Initial value of x: ", x[0, 0])
 
 
-# Solve the problem
 try:
-    prob.solve(solver=GUROBI(manageEnv=True, envOptions=options))
-except:
-    pass
+    prob.solve(solver=GUROBI_CMD())
+except KeyboardInterrupt:
+    print("Optimization interrupted. Checking for feasible solution...")
+    with open("interrupted_solution.txt", "w") as f:
+        for v in prob.variables():
+            if v.varValue == 1:
+                f.write(f"{v.name}: {v.varValue}\n")
+
 # Output results
 print(f"Status: {pulp.LpStatus[prob.status]}")
-print(f"obj bound {prob.solverModel.ObjBound}") # best objective found
 
 # Containers used
 containers_used = sum([y[j].varValue for j in range(MAX_CONTAINERS)])
 print(f"Total Containers Used: {containers_used}")
 
-# Orders in each container
-
-# Print optimal values of decision variables.
-try:
-    print("All variables:")
+with open("solution.txt", "w") as f:
     for v in prob.variables():
-        if v.varValue == 1:
-            print(v.name, "=", v.varValue)
-except:
-    pass
-print()
-#printing both just to make sure that the values are the same
-try:
-    for j in range(MAX_CONTAINERS):
-        if y[j].varValue == 1:
-            print(f"Container {j+1}:")
-            for i in range(len(data)):
-                if x[i, j].varValue == 1:
-                    print(f"  Order {order_numbers[i]} - Weight: {weights[i]}, Volume: {volumes[i]}, Pallets: {pallets[i]}")
-except: 
-    pass
-
-print("---------------------------------------------------")
-f.close()
+            if v.varValue == 1:
+                f.write(f"{v.name}: {v.varValue}\n")
