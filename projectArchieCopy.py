@@ -13,7 +13,7 @@ import sys
 #     "LogFile": "gurobi1a.log",}
 
 # Read in data
-dataset_name = 'Term project data 1a.csv'
+dataset_name = 'Term project data final.csv'
 dataset_name_no_extension = dataset_name.split('.')[0]
 data = pd.read_csv(dataset_name)
 
@@ -46,13 +46,12 @@ print("Number of containers initial (greedy) ", MAX_CONTAINERS)
 # Decision variables
 # Binary variable where x_ij = 1 if order i is assigned to container j, 0 otherwise
 x = pulp.LpVariable.dicts("x", [(i, j) for i in range(len(data)) for j in range(MAX_CONTAINERS)], cat="Binary") 
-# Binary variable where y_j = 1 if contai ner j is used, 0 otherwise
+# Binary variable where y_j = 1 if container j is used, 0 otherwise
 y = pulp.LpVariable.dicts("y", [j for j in range(MAX_CONTAINERS)], cat="Binary")
 
 # Objective: minimize the number of containers used
 prob += pulp.lpSum([y[j] for j in range(MAX_CONTAINERS)])
 
-    
 # Constraint 1: Each order is assigned to exactly one container
 for i in range(len(data)):
     prob += pulp.lpSum([x[i, j] for j in range(MAX_CONTAINERS)]) == 1
