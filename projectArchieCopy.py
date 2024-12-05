@@ -33,16 +33,9 @@ order_numbers = data['Order Number'].tolist()
 
 
 
-<<<<<<< HEAD
 # options = {"WLSACCESSID": "",
 #     "WLSSECRET": "",
 #     "LICENSEID": }
-=======
-options = {"WLSACCESSID":,
-    "WLSSECRET": ,
-    "LICENSEID": ,
-    "LogFile": "gurobi.log",}
->>>>>>> b4b584fc124f299593dae6d0aa92fedfcc752315
 
 # Greedy initial solution
 data = compute_metric(data)
@@ -62,16 +55,13 @@ prob += pulp.lpSum([y[j] for j in range(MAX_CONTAINERS)])
 # Constraint to force x[0, 0] to 1
 prob += x[0, 0] == 1
 
-<<<<<<< HEAD
 # Constraint to force y at index 0 to 262 to 1
 # for j in range(262):
 #     prob += y[j] == 1
 
-=======
->>>>>>> b4b584fc124f299593dae6d0aa92fedfcc752315
 # Constraint to force y[j] to be 1 only if y[j-1] is 1
-for j in range(1, MAX_CONTAINERS):
-    prob += y[j] <= y[j-1]
+# for j in range(1, MAX_CONTAINERS):
+#     prob += y[j] <= y[j-1]
 
 # Constraint 1: Each order is assigned to exactly one container
 for i in range(len(data)):
@@ -95,8 +85,8 @@ for j, orders in greedy_solution.items():
         x[order_index, j].setInitialValue(1)
     y[j].setInitialValue(1)
 
-# print("Initial value of y: ", y[0])
-# print("Initial value of x: ", x[0, 0])
+print("Initial value of y: ", y[0].varValue)
+print("Initial value of x: ", x[0, 0].varValue)
 
 
 # Solve the problem
@@ -106,14 +96,9 @@ try:
 except KeyboardInterrupt:
     print("Optimization interrupted. Checking for feasible solution...")
     with open("interrupted_solution.txt", "w") as f:
-        for j in range(MAX_CONTAINERS):
-            if y[j].varValue == 1:
-                print(f"Container {j+1}:")
-                f.write(f"Container {j+1}:\n")
-                for i in range(len(data)):
-                    if x[i, j].varValue == 1:
-                        print(f"  Order {order_numbers[i]} - Weight: {weights[i]}, Volume: {volumes[i]}, Pallets: {pallets[i]}")
-                        f.write(f"  Order {order_numbers[i]} - Weight: {weights[i]}, Volume: {volumes[i]}, Pallets: {pallets[i]}\n")
+        for v in prob.variables():
+            if v.varValue == 1:
+                f.write(f"{v.name}: {v.varValue}\n")
 
 # Output results
 print(f"Status: {pulp.LpStatus[prob.status]}")
@@ -123,11 +108,6 @@ containers_used = sum([y[j].varValue for j in range(MAX_CONTAINERS)])
 print(f"Total Containers Used: {containers_used}")
 
 with open("solution.txt", "w") as f:
-    for j in range(MAX_CONTAINERS):
-        if y[j].varValue == 1:
-            print(f"Container {j+1}:")
-            f.write(f"Container {j+1}:\n")
-            for i in range(len(data)):
-                if x[i, j].varValue == 1:
-                    print(f"  Order {order_numbers[i]} - Weight: {weights[i]}, Volume: {volumes[i]}, Pallets: {pallets[i]}")
-                    f.write(f"  Order {order_numbers[i]} - Weight: {weights[i]}, Volume: {volumes[i]}, Pallets: {pallets[i]}\n")
+    for v in prob.variables():
+            if v.varValue == 1:
+                f.write(f"{v.name}: {v.varValue}\n")
